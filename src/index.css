@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+    --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  }
+
+  body {
+    background-color: #000000;
+    color: #f1f5f9;
+    overflow-x: hidden;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  :focus-visible {
+    outline: 2px solid #00f2fe;
+    outline-offset: 2px;
+  }
+
+  /* Protección contra arrastre y selección de imágenes, videos y logos */
+  img, video, svg, [data-protected] {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+}
+
+/* Custom tactile button feedback according to Emil Kowalski design engineering */
+.btn-tactile {
+  transition: transform 140ms var(--ease-out), scale 140ms var(--ease-out), box-shadow 140ms ease, background-color 140ms ease, border-color 140ms ease;
+}
+
+.btn-tactile:active {
+  scale: 0.96;
+}
+
+/* Custom glow and neon effects (Only Cyan and White) */
+.text-neon-glow {
+  text-shadow: 0 0 10px rgba(0, 242, 254, 0.6), 0 0 25px rgba(0, 242, 254, 0.4);
+}
+
+.border-neon-glow {
+  box-shadow: 0 0 15px -2px rgba(0, 242, 254, 0.45);
+}
+
+.bg-radial-hero {
+  background: radial-gradient(circle at 50% 20%, rgba(0, 242, 254, 0.12) 0%, rgba(3, 5, 8, 0) 70%);
+}
+
+.bg-radial-glow {
+  background: radial-gradient(circle at center, rgba(0, 242, 254, 0.08) 0%, rgba(3, 5, 8, 0) 80%);
+}
+
+/* Crystalline glass utility */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.45), inset 0 1px 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #030508;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00f2fe;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-shine {
+  animation: shine 5s linear infinite;
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}

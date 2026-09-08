@@ -1,0 +1,12 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# Disallow private paths
+Disallow: /admin
+Disallow: /private/
+Disallow: /*?*token=*
+
+# Host & Sitemap
+Host: https://fbsevengym.com
+Sitemap: https://fbsevengym.com/sitemap.xml

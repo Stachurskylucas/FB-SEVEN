@@ -1,0 +1,158 @@
+# ==============================================================================
+# FB SEVEN TRAINING - APACHE / LITESPEED / HOSTINGER CONFIGURATION (.htaccess)
+# Módulo 1: Seguridad & Privacidad | Módulo 2: Optimización & WPO
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. SEGURIDAD: REDIRECCIÓN OBLIGATORIA A HTTPS (301)
+# ------------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Forzar HTTPS siempre
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Forzar no-www (canónico para evitar contenido duplicado en SEO)
+  RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+  RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# 2. CABECERAS DE SEGURIDAD ESTRICTAS (SECURITY HEADERS)
+# ------------------------------------------------------------------------------
+<IfModule mod_headers.c>
+  # HTTP Strict Transport Security (HSTS) - 2 años con subdominios y preload
+  Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+
+  # Prevención de Clickjacking
+  Header always set X-Frame-Options "SAMEORIGIN"
+
+  # Prevención de sniffing de tipos MIME
+  Header always set X-Content-Type-Options "nosniff"
+
+  # Control de referrer estricto
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Permissions Policy: Restringir APIs sensibles del navegador
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(self), payment=(), usb=()"
+
+  # Protección XSS heredada para navegadores antiguos
+  Header always set X-XSS-Protection "1; mode=block"
+
+  # Content-Security-Policy (CSP) robusta
+  # Compatible con Vite, React, Google Maps iframe, Google Fonts, WhatsApp y procesadores de pago (MercadoPago / Stripe)
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.google.com https://www.gstatic.com https://sdk.mercadopago.com https://js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; frame-src 'self' https://www.google.com https://maps.google.com https://js.stripe.com https://sdk.mercadopago.com; connect-src 'self' https://api.mercadopago.com https://api.stripe.com https://www.google.com https://wa.me; media-src 'self' blob: https:; object-src 'none'; base-uri 'self'; form-action 'self' https://wa.me;"
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# 3. BLOQUEO DE ARCHIVOS SENSIBLES Y CONFIGURACIONES
+# ------------------------------------------------------------------------------
+<FilesMatch "^\.|\.(bak|config|sql|fla|psd|ini|log|sh|inc|swp|dist|env|git|json|ts|tsx)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
+</FilesMatch>
+
+# Permitir explícitamente robots.txt, sitemap.xml y manifest.json
+<FilesMatch "^(robots\.txt|sitemap\.xml|manifest\.json)$">
+  <IfModule mod_authz_core.c>
+    Require all granted
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Allow from all
+  </IfModule>
+</FilesMatch>
+
+# Deshabilitar listado de directorios
+Options -Indexes
+
+# ------------------------------------------------------------------------------
+# 4. COMPRESIÓN GZIP / DEFLATE (WPO)
+# ------------------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/xml
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE font/opentype
+  AddOutputFilterByType DEFLATE font/ttf
+  AddOutputFilterByType DEFLATE font/eot
+  AddOutputFilterByType DEFLATE font/otf
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# 5. CONTROL DE CACHÉ DEL SERVIDOR (EXPIRES & CACHE-CONTROL - WPO)
+# ------------------------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+
+  # HTML principal: Nunca cachear para asegurar que los usuarios reciban siempre la última versión de la SPA
+  ExpiresByType text/html "access plus 0 seconds"
+
+  # CSS y JavaScript compilados con hash de Vite: 1 año inmutable
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+
+  # Fuentes web: 1 año
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/ttf "access plus 1 year"
+
+  # Imágenes estáticas: 1 mes / 1 año
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/avif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+
+  # Videos
+  ExpiresByType video/mp4 "access plus 1 month"
+  ExpiresByType video/webm "access plus 1 month"
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Inmutabilidad para recursos versionados por Vite
+  <FilesMatch "\.(css|js|woff2|woff|ttf|webp|avif|png|jpg|jpeg|svg)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # HTML siempre revalidado
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </FilesMatch>
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# 6. ENRUTAMIENTO SPA (SINGLE PAGE APPLICATION REWRITE)
+# ------------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Si el archivo o directorio existe físicamente, servirlo directamente
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Cualquier otra ruta (ej: /clases, /terminos, /privacidad) se sirve a través de index.html
+  RewriteRule ^ index.html [L]
+</IfModule>
