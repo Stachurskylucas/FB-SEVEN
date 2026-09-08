@@ -11,6 +11,7 @@ import { NosotrosPage } from './pages/NosotrosPage';
 import { ContactoPage } from './pages/ContactoPage';
 import { TerminosPage } from './pages/TerminosPage';
 import { PrivacidadPage } from './pages/PrivacidadPage';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 export function App() {
   // Bloquear clic derecho y arrastre de imágenes, logos y videos
@@ -58,7 +59,7 @@ export function App() {
             <Route path="/contacto" element={<ContactoPage />} />
             <Route path="/terminos" element={<TerminosPage />} />
             <Route path="/privacidad" element={<PrivacidadPage />} />
-            <Route path="*" element={<HomePage />} />
+            <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
 

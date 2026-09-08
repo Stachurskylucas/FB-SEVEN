@@ -1,15 +1,33 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Magnet } from './reactbits/Magnet';
+
+const ROTATING_WORDS = [
+  'MUSCULACIÓN',
+  'CROSSFIT',
+  'FUNCIONAL',
+  'PILATES',
+  'BOXEO'
+];
 
 export const Hero: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [wordIndex, setWordIndex] = useState(0);
 
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.playbackRate = 0.85;
     }
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setWordIndex((prev) => (prev + 1) % ROTATING_WORDS.length);
+    }, 3200);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -43,7 +61,7 @@ export const Hero: React.FC = () => {
 
       {/* 2. FOREGROUND CONTENT */}
       <div className="relative max-w-[1400px] mx-auto w-full z-20 text-left">
-        <div className="max-w-2xl drop-shadow-[0_4px_24px_rgba(0,0,0,0.85)]">
+        <div className="max-w-4xl lg:max-w-5xl drop-shadow-[0_4px_24px_rgba(0,0,0,0.85)]">
           
           {/* Top Pill Announcement */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.08] backdrop-blur-2xl border border-white/20 text-[11px] font-semibold uppercase tracking-wider shadow-[0_4px_16px_rgba(0,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.3)] mb-5">
@@ -53,11 +71,32 @@ export const Hero: React.FC = () => {
             </span>
           </div>
 
-          {/* Main Headline */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[72px] font-display font-black tracking-tight leading-[0.96] uppercase text-white select-none">
-            <span className="block">ENTRENÁ AL MÁS</span>
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-brand-neon via-cyan-200 to-white drop-shadow-[0_0_30px_rgba(0,242,254,0.8)]">
-              ALTO NIVEL.
+          {/* Main Headline: ENTRENÁ + PALABRA en la misma línea + AL MÁS ALTO NIVEL en la 2da línea */}
+          <h1 className="text-[22px] xs:text-[26px] sm:text-4xl md:text-5xl lg:text-[58px] xl:text-[64px] font-display font-black tracking-tight leading-[1.12] uppercase select-none">
+            {/* Línea 1: ENTRENÁ y la palabra dinámica en una sola línea */}
+            <span className="flex flex-nowrap items-baseline gap-2 sm:gap-3 text-white">
+              <span className="shrink-0 text-white">
+                ENTRENÁ
+              </span>
+              <span className="relative inline-block overflow-visible">
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={ROTATING_WORDS[wordIndex]}
+                    initial={{ y: -26, opacity: 0, filter: 'blur(4px)' }}
+                    animate={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
+                    exit={{ y: 26, opacity: 0, filter: 'blur(4px)' }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-brand-neon via-white to-cyan-300 drop-shadow-[0_0_30px_rgba(0,242,254,0.6)] font-black tracking-tight whitespace-nowrap"
+                  >
+                    {ROTATING_WORDS[wordIndex]}
+                  </motion.span>
+                </AnimatePresence>
+              </span>
+            </span>
+
+            {/* Línea 2: Slogan más corto y contundente */}
+            <span className="block mt-1 sm:mt-2 text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)]">
+              A OTRO NIVEL.
             </span>
           </h1>
 

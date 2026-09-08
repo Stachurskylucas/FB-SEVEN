@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { 
   MessageCircle, 
   MapPin, 
@@ -265,18 +266,18 @@ export const Footer: React.FC = () => {
                 &copy; {new Date().getFullYear()} FB SEVEN TRAINING. Todos los derechos reservados.
               </p>
               <div className="flex items-center gap-4">
-                <a
-                  href="/terminos"
+                <Link
+                  to="/terminos"
                   className="text-slate-400 hover:text-brand-neon underline underline-offset-4 transition-colors"
                 >
                   Términos y Condiciones
-                </a>
-                <a
-                  href="/privacidad"
+                </Link>
+                <Link
+                  to="/privacidad"
                   className="text-slate-400 hover:text-brand-neon underline underline-offset-4 transition-colors"
                 >
                   Privacidad (Ley 25.326)
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -411,9 +412,9 @@ export const Footer: React.FC = () => {
         <hr className="border-t border-neutral-800/80 mt-8 mb-4" />
       </div>
 
-      {/* Giant Interactive Text Hover Effect */}
-      <ScrollReveal direction="up" duration={0.9} delay={0.1} className="w-full">
-        <div className="flex h-[13rem] sm:h-[18rem] lg:h-[24rem] -mt-4 sm:-mt-12 lg:-mt-16 mb-2 sm:-mb-12 lg:-mb-16 justify-center items-center overflow-hidden pointer-events-auto relative">
+      {/* Giant Interactive Text Hover Effect - Oculto en tablet y mobile, solo visible en desktop */}
+      <ScrollReveal direction="up" duration={0.9} delay={0.1} className="hidden lg:block w-full">
+        <div className="flex h-[12rem] lg:h-[16rem] -mt-4 lg:-mt-8 -mb-4 lg:-mb-8 justify-center items-center overflow-hidden pointer-events-auto relative px-4">
           <TextHoverEffect text="FB SEVEN" className="z-20 w-full" />
         </div>
       </ScrollReveal>
