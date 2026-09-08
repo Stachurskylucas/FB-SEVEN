@@ -162,20 +162,11 @@ export const Navbar: React.FC = () => {
               </Link>
             </div>
 
-            {/* Mobile Actions: Compact Anotate + Hamburger Toggle */}
-            <div className="flex md:hidden items-center gap-2 ml-auto z-10">
-              <Link
-                to="/#contacto"
-                onClick={handleEnrollClick}
-                className="btn-tactile inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-brand-neon text-black font-extrabold text-xs uppercase tracking-wider shadow-[0_0_12px_rgba(0,242,254,0.4)]"
-              >
-                <UserPlus className="w-3.5 h-3.5 text-black" />
-                <span>Anotate</span>
-              </Link>
-
+            {/* Mobile Actions: Hamburger Toggle */}
+            <div className="flex md:hidden items-center ml-auto z-10">
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="btn-tactile p-1.5 rounded-full bg-white/10 hover:bg-white/20 text-white"
+                className="btn-tactile p-2 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center cursor-pointer transition-colors"
                 aria-label="Abrir menú"
               >
                 {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}

@@ -2,7 +2,6 @@ import React from 'react';
 import { Hero } from '../components/Hero';
 import { ActivitiesSection } from '../components/ActivitiesSection';
 import { SedesGallerySection } from '../components/SedesGallerySection';
-import { SocialProofSection } from '../components/SocialProofSection';
 import { PricingSection } from '../components/PricingSection';
 import { FAQSection } from '../components/FAQSection';
 import { ContactSection } from '../components/ContactSection';
@@ -28,10 +27,7 @@ export const HomePage: React.FC = () => {
       {/* 3. Galería de Nuestras Sedes con Thumbnail Carousel (Fondo completamente negro unificado) */}
       <SedesGallerySection />
 
-      {/* 4. Social Proof & Reseñas Verificadas Google Maps (Calificación 4.9★ y testimonios) */}
-      <SocialProofSection />
-
-      {/* 5. Memberships & Plans (Fondo animado con WebGL LightRays azul/cian) */}
+      {/* 4. Memberships & Plans (Fondo animado con WebGL LightRays azul/cian) */}
       <PricingSection />
 
       {/* 5. Frequently Asked Questions (Fondo completamente negro) */}

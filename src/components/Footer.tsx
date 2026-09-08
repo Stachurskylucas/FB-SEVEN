@@ -413,7 +413,7 @@ export const Footer: React.FC = () => {
 
       {/* Giant Interactive Text Hover Effect */}
       <ScrollReveal direction="up" duration={0.9} delay={0.1} className="w-full">
-        <div className="flex h-[12rem] sm:h-[18rem] lg:h-[24rem] -mt-8 sm:-mt-12 lg:-mt-16 -mb-8 sm:-mb-12 lg:-mb-16 justify-center items-center overflow-hidden pointer-events-auto relative">
+        <div className="flex h-[13rem] sm:h-[18rem] lg:h-[24rem] -mt-4 sm:-mt-12 lg:-mt-16 mb-2 sm:-mb-12 lg:-mb-16 justify-center items-center overflow-hidden pointer-events-auto relative">
           <TextHoverEffect text="FB SEVEN" className="z-20 w-full" />
         </div>
       </ScrollReveal>
