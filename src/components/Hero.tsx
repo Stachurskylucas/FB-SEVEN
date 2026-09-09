@@ -17,9 +17,40 @@ export const Hero: React.FC = () => {
   const [wordIndex, setWordIndex] = useState(0);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 0.85;
-    }
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Forzar propiedades nativas requeridas por iOS Safari y Android WebKit
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    video.setAttribute('playsinline', 'true');
+    video.setAttribute('webkit-playsinline', 'true');
+    video.playbackRate = 0.85;
+
+    // Intentar reproducción automática programática
+    const attemptPlay = () => {
+      const promise = video.play();
+      if (promise !== undefined) {
+        promise.catch(() => {
+          // En móviles con modo Ahorro de batería o datos restringidos,
+          // el navegador desbloquea la reproducción al primer toque o scroll del usuario:
+          const unlockMedia = () => {
+            video.play().catch(() => {});
+            window.removeEventListener('touchstart', unlockMedia);
+            window.removeEventListener('touchend', unlockMedia);
+            window.removeEventListener('scroll', unlockMedia);
+            window.removeEventListener('click', unlockMedia);
+          };
+          window.addEventListener('touchstart', unlockMedia, { passive: true, once: true });
+          window.addEventListener('touchend', unlockMedia, { passive: true, once: true });
+          window.addEventListener('scroll', unlockMedia, { passive: true, once: true });
+          window.addEventListener('click', unlockMedia, { passive: true, once: true });
+        });
+      }
+    };
+
+    attemptPlay();
   }, []);
 
   useEffect(() => {
@@ -37,9 +68,8 @@ export const Hero: React.FC = () => {
       <div className="absolute inset-0 z-0 overflow-hidden select-none">
         <video
           ref={videoRef}
-          src="/videos/hero-bg.mp4"
           poster="/images/sede-pacifico-maquinas.png"
-          preload="metadata"
+          preload="auto"
           autoPlay
           loop
           muted
@@ -47,7 +77,9 @@ export const Hero: React.FC = () => {
           draggable={false}
           onContextMenu={(e) => e.preventDefault()}
           className="w-full h-full object-cover scale-105 opacity-85 transition-opacity duration-1000 pointer-events-none"
-        />
+        >
+          <source src="/videos/hero-bg.mp4" type="video/mp4" />
+        </video>
 
         {/* Subtle gradient overlays */}
         <div className="absolute inset-0 bg-gradient-to-r from-[#020408]/85 via-[#020408]/45 to-transparent pointer-events-none" />
