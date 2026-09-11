@@ -145,6 +145,17 @@ export const Footer: React.FC = () => {
               <p className="text-sm text-slate-300 leading-relaxed font-normal">
                 Centro de Alto Rendimiento y Biomecánica en Zona Oeste. 3 Sedes interconectadas con pase libre multisede.
               </p>
+              <div className="flex flex-wrap items-center gap-2 pt-1 text-xs font-semibold">
+                <Link to="/servicios" className="text-brand-neon hover:text-white transition-colors flex items-center gap-1">
+                  <span>Servicios & Turnos</span>
+                  <span>→</span>
+                </Link>
+                <span className="text-white/20">•</span>
+                <Link to="/clases" className="text-slate-400 hover:text-brand-neon transition-colors flex items-center gap-1">
+                  <span>Clases & Horarios</span>
+                  <span>→</span>
+                </Link>
+              </div>
             </div>
 
             {/* 2. Sedes Direct Information */}

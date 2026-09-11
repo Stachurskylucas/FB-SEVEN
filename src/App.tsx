@@ -7,6 +7,7 @@ import { Footer } from './components/Footer';
 import { WhatsAppWidget } from './components/WhatsAppWidget';
 import { HomePage } from './pages/HomePage';
 import { ClasesPage } from './pages/ClasesPage';
+import { ServiciosPage } from './pages/ServiciosPage';
 import { NosotrosPage } from './pages/NosotrosPage';
 import { ContactoPage } from './pages/ContactoPage';
 import { TerminosPage } from './pages/TerminosPage';
@@ -55,6 +56,7 @@ export function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/clases" element={<ClasesPage />} />
+            <Route path="/servicios" element={<ServiciosPage />} />
             <Route path="/nosotros" element={<NosotrosPage />} />
             <Route path="/contacto" element={<ContactoPage />} />
             <Route path="/terminos" element={<TerminosPage />} />
