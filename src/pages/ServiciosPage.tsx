@@ -91,31 +91,17 @@ export const ServiciosPage: React.FC = () => {
         canonicalUrl="https://fbsevengym.com/servicios"
       />
 
-      <main className="min-h-screen bg-[#02050d] text-white pt-24 sm:pt-28 pb-20 relative overflow-hidden">
+      <main className="min-h-screen bg-black text-white pt-24 sm:pt-28 pb-20 relative overflow-hidden">
         
-        {/* Dynamic Black & Deep Blue Background Gradient & Lighting Layers */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#030917] via-[#02050d] to-[#040b18] pointer-events-none" />
-        
-        {/* Tech Grid Pattern with soft fade */}
-        <div 
-          className="absolute inset-0 pointer-events-none opacity-[0.06]"
-          style={{
-            backgroundImage: 'linear-gradient(to right, #00f2fe 1px, transparent 1px), linear-gradient(to bottom, #00f2fe 1px, transparent 1px)',
-            backgroundSize: '48px 48px'
-          }}
-        />
-
-        {/* Ambient Blue & Cyan Orbs */}
-        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[900px] h-[550px] bg-gradient-to-b from-blue-600/20 via-cyan-500/15 to-transparent rounded-full blur-[140px] pointer-events-none" />
-        <div className="absolute top-[35%] -left-32 w-[600px] h-[600px] bg-blue-700/15 rounded-full blur-[160px] pointer-events-none" />
-        <div className="absolute top-[55%] -right-32 w-[650px] h-[650px] bg-cyan-600/12 rounded-full blur-[160px] pointer-events-none" />
-        <div className="absolute bottom-10 left-1/3 w-[700px] h-[500px] bg-blue-900/20 rounded-full blur-[180px] pointer-events-none" />
+        {/* Ambient Glows */}
+        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-brand-neon/10 rounded-full blur-[200px] pointer-events-none" />
+        <div className="absolute top-[40%] right-0 w-[500px] h-[500px] bg-brand-neon/5 rounded-full blur-[180px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
           {/* 1. Header Hero */}
           <ScrollReveal direction="down" duration={0.7} className="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-950/50 backdrop-blur-2xl border border-cyan-500/30 text-xs font-bold uppercase tracking-widest text-brand-neon mb-4 shadow-[0_4px_20px_rgba(0,242,254,0.15)]">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.08] backdrop-blur-2xl border border-white/20 text-xs font-bold uppercase tracking-widest text-brand-neon mb-4 shadow-[0_4px_20px_rgba(0,0,0,0.4)]">
               <HeartPulse className="w-4 h-4 text-brand-neon animate-pulse" />
               <span>Gabinete Médico, Salud & Alto Rendimiento</span>
             </div>
@@ -144,7 +130,7 @@ export const ServiciosPage: React.FC = () => {
                 href="https://wa.me/5491144724002?text=¡Hola%20FB%20SEVEN!%20Quisiera%20consultar%20por%20los%20servicios%20de%20salud,%20apto%20médico%20y%20masajes."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3.5 rounded-2xl bg-[#061325]/80 hover:bg-[#0b1f3c] border border-cyan-500/25 text-white font-bold text-xs uppercase tracking-wider flex items-center gap-2 transition-all shadow-md"
+                className="px-6 py-3.5 rounded-2xl bg-white/[0.08] hover:bg-white/[0.14] border border-white/20 text-white font-bold text-xs uppercase tracking-wider flex items-center gap-2 transition-all shadow-md"
               >
                 <MessageCircle className="w-4 h-4 text-brand-neon" />
                 <span>Consulta Rápida por WhatsApp</span>
@@ -152,13 +138,10 @@ export const ServiciosPage: React.FC = () => {
             </div>
           </ScrollReveal>
 
-          {/* 2. Cómo Funciona el Sistema de Turnos (3 Pasos) - Ubicado arriba para máxima claridad */}
+          {/* 2. Cómo Funciona el Sistema de Turnos (3 Pasos) - Ubicado arriba */}
           <ScrollReveal direction="up" duration={0.7} className="mb-14 sm:mb-16">
-            <div className="bg-gradient-to-r from-[#040c1a]/95 via-[#081830]/90 to-[#040c1a]/95 border border-cyan-500/30 rounded-3xl p-6 sm:p-10 shadow-[0_12px_45px_rgba(0,140,255,0.14)] relative overflow-hidden">
-              <div className="absolute -right-16 -top-16 w-60 h-60 bg-cyan-500/10 rounded-full blur-[80px] pointer-events-none" />
-              <div className="absolute -left-16 -bottom-16 w-60 h-60 bg-blue-600/15 rounded-full blur-[80px] pointer-events-none" />
-
-              <div className="text-center max-w-xl mx-auto mb-8 relative z-10">
+            <div className="bg-[#090d14]/90 border border-neutral-800/90 rounded-3xl p-6 sm:p-10 shadow-2xl">
+              <div className="text-center max-w-xl mx-auto mb-8">
                 <span className="text-brand-neon text-[11px] font-bold uppercase tracking-widest block mb-1">
                   Atención Rápida & Sin Fila
                 </span>
@@ -167,9 +150,9 @@ export const ServiciosPage: React.FC = () => {
                 </h2>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 relative z-10">
-                <div className="p-5 sm:p-6 rounded-2xl bg-[#030914]/80 border border-cyan-500/20 text-center space-y-2.5 hover:border-cyan-400/50 hover:bg-[#050f21] transition-all duration-300">
-                  <div className="w-10 h-10 rounded-full bg-brand-neon/20 border border-brand-neon text-brand-neon font-black flex items-center justify-center mx-auto text-sm shadow-[0_0_15px_rgba(0,242,254,0.35)]">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+                <div className="p-5 sm:p-6 rounded-2xl bg-white/[0.03] border border-white/10 text-center space-y-2.5">
+                  <div className="w-10 h-10 rounded-full bg-brand-neon/20 border border-brand-neon text-brand-neon font-black flex items-center justify-center mx-auto text-sm">
                     1
                   </div>
                   <h4 className="text-sm font-bold uppercase text-white">Elegí tu Servicio & Sede</h4>
@@ -178,8 +161,8 @@ export const ServiciosPage: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="p-5 sm:p-6 rounded-2xl bg-[#030914]/80 border border-cyan-500/20 text-center space-y-2.5 hover:border-cyan-400/50 hover:bg-[#050f21] transition-all duration-300">
-                  <div className="w-10 h-10 rounded-full bg-brand-neon/20 border border-brand-neon text-brand-neon font-black flex items-center justify-center mx-auto text-sm shadow-[0_0_15px_rgba(0,242,254,0.35)]">
+                <div className="p-5 sm:p-6 rounded-2xl bg-white/[0.03] border border-white/10 text-center space-y-2.5">
+                  <div className="w-10 h-10 rounded-full bg-brand-neon/20 border border-brand-neon text-brand-neon font-black flex items-center justify-center mx-auto text-sm">
                     2
                   </div>
                   <h4 className="text-sm font-bold uppercase text-white">Definí Día & Horario</h4>
@@ -188,8 +171,8 @@ export const ServiciosPage: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="p-5 sm:p-6 rounded-2xl bg-[#030914]/80 border border-cyan-500/20 text-center space-y-2.5 hover:border-cyan-400/50 hover:bg-[#050f21] transition-all duration-300">
-                  <div className="w-10 h-10 rounded-full bg-brand-neon/20 border border-brand-neon text-brand-neon font-black flex items-center justify-center mx-auto text-sm shadow-[0_0_15px_rgba(0,242,254,0.35)]">
+                <div className="p-5 sm:p-6 rounded-2xl bg-white/[0.03] border border-white/10 text-center space-y-2.5">
+                  <div className="w-10 h-10 rounded-full bg-brand-neon/20 border border-brand-neon text-brand-neon font-black flex items-center justify-center mx-auto text-sm">
                     3
                   </div>
                   <h4 className="text-sm font-bold uppercase text-white">Confirmación por WhatsApp</h4>
@@ -211,7 +194,7 @@ export const ServiciosPage: React.FC = () => {
                 placeholder="Buscar servicio (ej: apto médico, descontracturante, antropometría)..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-[#061021]/90 border border-cyan-500/25 text-white text-sm focus:border-brand-neon focus:outline-none placeholder:text-slate-500 transition-colors shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
+                className="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-[#090d14]/90 border border-neutral-800 text-white text-sm focus:border-brand-neon focus:outline-none placeholder:text-neutral-500 transition-colors shadow-lg"
               />
               {searchQuery && (
                 <button
@@ -234,7 +217,7 @@ export const ServiciosPage: React.FC = () => {
                     className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
                       isActive
                         ? 'bg-brand-neon text-black shadow-[0_0_20px_rgba(0,242,254,0.4)]'
-                        : 'bg-[#061325]/75 hover:bg-[#0b203d] text-slate-300 border border-cyan-500/20 hover:border-cyan-400/40 hover:text-white'
+                        : 'bg-white/[0.05] hover:bg-white/[0.1] text-slate-300 border border-white/10 hover:text-white'
                     }`}
                   >
                     {cat.label}
@@ -255,7 +238,7 @@ export const ServiciosPage: React.FC = () => {
                   delay={(index % 3) * 0.1}
                   className="h-full"
                 >
-                  <div className="h-full flex flex-col bg-gradient-to-b from-[#071325]/95 via-[#050d1a]/95 to-[#020710]/95 border border-cyan-500/20 rounded-3xl overflow-hidden hover:border-cyan-400/60 transition-all duration-300 shadow-xl group hover:shadow-[0_12px_40px_rgba(0,180,255,0.18)]">
+                  <div className="h-full flex flex-col bg-[#090d14]/90 border border-neutral-800/90 rounded-3xl overflow-hidden hover:border-brand-neon/60 transition-all duration-300 shadow-xl group hover:shadow-[0_10px_35px_rgba(0,242,254,0.15)]">
                     
                     {/* Image Header with Badge */}
                     <div className="relative h-48 sm:h-52 w-full overflow-hidden">
@@ -264,7 +247,7 @@ export const ServiciosPage: React.FC = () => {
                         alt={service.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-90"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#071325] via-black/30 to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#090d14] via-black/30 to-transparent" />
                       
                       {/* Top Badges */}
                       <div className="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between gap-2">
@@ -303,7 +286,7 @@ export const ServiciosPage: React.FC = () => {
 
                         {/* Specialist Callout */}
                         {service.specialist && (
-                          <div className="mt-3.5 p-2.5 rounded-xl bg-cyan-950/30 border border-cyan-500/20 text-[11px] text-slate-300 flex items-center gap-2">
+                          <div className="mt-3.5 p-2.5 rounded-xl bg-white/[0.03] border border-white/10 text-[11px] text-slate-300 flex items-center gap-2">
                             <Sparkles className="w-3.5 h-3.5 text-brand-neon shrink-0" />
                             <span><strong>Profesional:</strong> {service.specialist}</span>
                           </div>
@@ -316,7 +299,7 @@ export const ServiciosPage: React.FC = () => {
                           </span>
                           <div className="flex flex-wrap gap-1.5">
                             {service.sedes.map((s, idx) => (
-                              <span key={idx} className="inline-flex items-center gap-1 text-[10.5px] px-2 py-0.5 rounded-md bg-blue-950/40 border border-cyan-500/20 text-slate-300">
+                              <span key={idx} className="inline-flex items-center gap-1 text-[10.5px] px-2 py-0.5 rounded-md bg-white/[0.05] border border-white/10 text-slate-300">
                                 <MapPin className="w-2.5 h-2.5 text-brand-neon" />
                                 <span>{s}</span>
                               </span>
@@ -325,7 +308,7 @@ export const ServiciosPage: React.FC = () => {
                         </div>
 
                         {/* Key Benefits Checklist */}
-                        <div className="mt-4 pt-4 border-t border-cyan-900/30">
+                        <div className="mt-4 pt-4 border-t border-neutral-800/80">
                           <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-2">
                             Qué incluye el servicio:
                           </span>
@@ -349,7 +332,7 @@ export const ServiciosPage: React.FC = () => {
                       </div>
 
                       {/* Card Action Buttons */}
-                      <div className="pt-4 border-t border-cyan-900/30 flex flex-col sm:flex-row items-center gap-2.5">
+                      <div className="pt-4 border-t border-neutral-800 flex flex-col sm:flex-row items-center gap-2.5">
                         <button
                           type="button"
                           onClick={() => handleOpenBooking(service.id)}
@@ -375,13 +358,13 @@ export const ServiciosPage: React.FC = () => {
               ))}
             </div>
           ) : (
-            <div className="text-center py-16 bg-[#061020] rounded-3xl border border-cyan-900/40 p-8 max-w-lg mx-auto mb-20 shadow-xl">
-              <Search className="w-10 h-10 text-cyan-500/60 mx-auto mb-3" />
+            <div className="text-center py-16 bg-[#090d14] rounded-3xl border border-neutral-800 p-8 max-w-lg mx-auto mb-20">
+              <Search className="w-10 h-10 text-slate-500 mx-auto mb-3" />
               <h3 className="text-lg font-bold text-white uppercase">No encontramos servicios con ese criterio</h3>
               <p className="text-xs text-slate-400 mt-1 mb-4">Probá con otra palabra o seleccioná otra categoría.</p>
               <button
                 onClick={() => { setSelectedCategory('todos'); setSearchQuery(''); }}
-                className="px-4 py-2 rounded-xl bg-brand-neon text-black font-bold text-xs uppercase tracking-wider shadow-[0_0_15px_rgba(0,242,254,0.3)]"
+                className="px-4 py-2 rounded-xl bg-brand-neon text-black font-bold text-xs uppercase tracking-wider"
               >
                 Ver todos los servicios
               </button>
@@ -391,7 +374,7 @@ export const ServiciosPage: React.FC = () => {
           {/* 5. Preguntas Frecuentes de Servicios */}
           <ScrollReveal direction="up" duration={0.7} className="max-w-3xl mx-auto mb-20">
             <div className="text-center mb-8">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-950/40 border border-cyan-500/25 text-slate-300 text-[11px] font-bold uppercase tracking-wider mb-2">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.06] border border-white/15 text-slate-300 text-[11px] font-bold uppercase tracking-wider mb-2">
                 <HelpCircle className="w-3.5 h-3.5 text-brand-neon" />
                 <span>Preguntas Frecuentes</span>
               </div>
@@ -406,7 +389,7 @@ export const ServiciosPage: React.FC = () => {
                 return (
                   <div
                     key={idx}
-                    className="border border-cyan-900/30 rounded-2xl bg-[#040c1a]/85 backdrop-blur-md overflow-hidden transition-colors hover:border-cyan-500/30"
+                    className="border border-neutral-800 rounded-2xl bg-[#090d14]/80 overflow-hidden transition-colors"
                   >
                     <button
                       type="button"
@@ -430,7 +413,7 @@ export const ServiciosPage: React.FC = () => {
                           exit={{ height: 0, opacity: 0 }}
                           transition={{ duration: 0.25 }}
                         >
-                          <div className="px-5 pb-5 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-cyan-950/80 pt-3">
+                          <div className="px-5 pb-5 text-xs sm:text-sm text-slate-300 leading-relaxed border-t border-neutral-800/60 pt-3">
                             {faq.a}
                           </div>
                         </motion.div>
@@ -444,14 +427,13 @@ export const ServiciosPage: React.FC = () => {
 
           {/* 6. Bottom Banner CTA */}
           <ScrollReveal direction="up" duration={0.8} className="text-center">
-            <div className="bg-gradient-to-r from-[#030917] via-[#071936] to-[#030917] border border-cyan-400/40 rounded-3xl p-8 sm:p-12 shadow-[0_0_60px_rgba(0,180,255,0.22)] relative overflow-hidden">
-              <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-blue-500/20 rounded-full blur-[100px] pointer-events-none" />
-              <div className="absolute -left-20 -top-20 w-80 h-80 bg-cyan-500/15 rounded-full blur-[100px] pointer-events-none" />
+            <div className="bg-[#0b1019] border border-brand-neon/30 rounded-3xl p-8 sm:p-12 shadow-[0_0_50px_rgba(0,242,254,0.15)] relative overflow-hidden">
+              <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-brand-neon/15 rounded-full blur-[100px] pointer-events-none" />
               
-              <h2 className="text-2xl sm:text-4xl font-display font-black uppercase text-white tracking-tight mb-3 relative z-10">
+              <h2 className="text-2xl sm:text-4xl font-display font-black uppercase text-white tracking-tight mb-3">
                 ¿Listo para Empezar a Entrenar con Salud?
               </h2>
-              <p className="text-xs sm:text-sm text-slate-300 max-w-lg mx-auto mb-6 relative z-10">
+              <p className="text-xs sm:text-sm text-slate-300 max-w-lg mx-auto mb-6">
                 Obtené tu apto médico oficial, organizá tu plan nutricional o relajá tus músculos tras una semana intensa.
               </p>
 

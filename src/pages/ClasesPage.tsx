@@ -444,38 +444,25 @@ export const ClasesPage: React.FC = () => {
         description="Grilla completa de actividades y horarios en las 3 sedes de FB SEVEN: Pacífico, Ricchieri y Muñiz. Musculación, Funcional, Pilates Reformer, Boxeo y más."
         canonicalUrl="https://fbsevengym.com/clases"
       />
-      <div className="pt-28 pb-32 bg-[#02050e] text-white min-h-screen relative overflow-hidden">
+      <div className="pt-28 pb-32 bg-[#05070a] text-white min-h-screen relative overflow-hidden">
       
-      {/* Dynamic Black & Deep Blue Atmosphere */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#030917] via-[#02050e] to-[#040c1b] pointer-events-none" />
-
-      {/* Tech Grid Pattern */}
+      {/* Background subtle neon ambiance */}
       <div 
-        className="absolute inset-0 pointer-events-none opacity-[0.06]"
+        className="fixed inset-0 pointer-events-none opacity-40 z-0"
         style={{
-          backgroundImage: 'linear-gradient(to right, #00f2fe 1px, transparent 1px), linear-gradient(to bottom, #00f2fe 1px, transparent 1px)',
-          backgroundSize: '48px 48px'
+          backgroundImage: 'radial-gradient(circle at 50% 10%, rgba(0, 242, 254, 0.12) 0%, transparent 60%), radial-gradient(circle at 85% 85%, rgba(0, 242, 254, 0.04) 0%, transparent 50%)'
         }}
       />
-
-      {/* Glowing Ambient Light Orbs (Blue & Cyan) */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[850px] h-[500px] bg-gradient-to-b from-blue-600/20 via-cyan-500/10 to-transparent rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute top-[40%] -right-24 w-[600px] h-[600px] bg-blue-700/15 rounded-full blur-[160px] pointer-events-none" />
-      <div className="absolute top-[65%] -left-24 w-[600px] h-[600px] bg-cyan-600/12 rounded-full blur-[160px] pointer-events-none" />
 
       <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
         
         {/* TOP HEADER: Centered title matching mockup */}
         <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-12">
           <ScrollReveal direction="none" duration={0.6}>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-950/50 backdrop-blur-2xl border border-cyan-500/30 text-xs font-bold uppercase tracking-widest text-brand-neon mb-4 shadow-[0_4px_20px_rgba(0,242,254,0.15)]">
-              <Sparkles className="w-4 h-4 text-brand-neon" />
-              <span>Gimnasio & Centro de Entrenamiento</span>
-            </div>
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-display font-black tracking-tight uppercase text-white leading-tight">
-              EXPLORA TUS <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-neon via-white to-cyan-300 drop-shadow-[0_0_30px_rgba(0,242,254,0.6)]">DISCIPLINAS Y ACTIVIDADES</span>
+              EXPLORA TUS DISCIPLINAS Y ACTIVIDADES
             </h1>
-            <p className="mt-3.5 text-slate-300 text-sm sm:text-base font-normal max-w-2xl mx-auto">
+            <p className="mt-3.5 text-slate-400 text-sm sm:text-base font-normal max-w-2xl mx-auto">
               Accedé a toda la oferta deportiva de FB SEVEN en nuestras 3 sedes (Pacífico, Ricchieri y Muñiz). Consultá horarios, nivel de intensidad y reservá tu lugar.
             </p>
           </ScrollReveal>
@@ -490,8 +477,8 @@ export const ClasesPage: React.FC = () => {
                   onClick={() => handleSelectCategory(pill.id)}
                   className={`px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
                     isActive
-                      ? 'bg-brand-neon text-black font-extrabold shadow-[0_0_20px_rgba(0,242,254,0.4)] scale-105'
-                      : 'bg-[#061224]/85 border border-cyan-500/20 text-slate-300 hover:text-white hover:border-cyan-400/40 hover:bg-[#0b1f3c]'
+                      ? 'bg-brand-neon text-black font-extrabold shadow-[0_0_20px_rgba(0,242,254,0.35)] scale-105'
+                      : 'bg-[#0c1015]/90 border border-neutral-800 text-slate-300 hover:text-white hover:border-neutral-700 hover:bg-[#121820]'
                   }`}
                 >
                   {pill.label}
@@ -516,7 +503,7 @@ export const ClasesPage: React.FC = () => {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3 }}
                 onClick={() => openScheduleModal(card)}
-                className="group relative rounded-2xl bg-gradient-to-b from-[#071325]/95 via-[#050d1a]/95 to-[#020710]/95 border border-cyan-500/20 hover:border-cyan-400/60 transition-all duration-300 overflow-hidden flex flex-col justify-between p-5 min-h-[260px] shadow-lg hover:shadow-[0_12px_40px_rgba(0,180,255,0.2)] cursor-pointer"
+                className="group relative rounded-2xl bg-[#0b0f14] border border-neutral-800/80 hover:border-brand-neon/50 transition-all duration-300 overflow-hidden flex flex-col justify-between p-5 min-h-[260px] shadow-lg hover:shadow-[0_0_30px_rgba(0,242,254,0.18)] cursor-pointer"
               >
                 {/* Background image covering card with seamless right placement and left-to-right fade */}
                 <div className="absolute inset-0 pointer-events-none overflow-hidden select-none">
@@ -529,15 +516,15 @@ export const ClasesPage: React.FC = () => {
                     loading="lazy"
                   />
                   {/* Gradients to blend seamlessly with the card background */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#071325] via-[#071325]/80 to-transparent" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#071325] via-transparent to-[#071325]/40" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#0b0f14] via-[#0b0f14]/80 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0b0f14] via-transparent to-[#0b0f14]/40" />
                 </div>
 
                 {/* Foreground Content (Left aligned) */}
                 <div className="relative z-10 flex flex-col justify-between h-full">
                   <div>
                     {/* Activity Title */}
-                    <h3 className="font-display font-black text-white text-lg sm:text-xl uppercase tracking-tight leading-tight line-clamp-2 pr-12 group-hover:text-brand-neon transition-colors">
+                    <h3 className="font-display font-black text-white text-lg sm:text-xl uppercase tracking-tight leading-tight line-clamp-2 pr-12">
                       {card.title}
                     </h3>
 
@@ -548,19 +535,19 @@ export const ClasesPage: React.FC = () => {
                   </div>
 
                   {/* Bottom Meta & Action Indicator */}
-                  <div className="mt-4 pt-3 border-t border-cyan-900/30">
+                  <div className="mt-4 pt-3 border-t border-neutral-800/60">
                     <div className="flex items-center justify-between text-[11px] text-slate-400 font-medium mb-2.5">
                       <span className="flex items-center gap-1 text-brand-neon font-semibold">
                         <Flame className="w-3 h-3" />
                         {card.difficulty}
                       </span>
                       <span className="flex items-center gap-1 text-slate-300">
-                        <Clock className="w-3 h-3 text-cyan-400" />
+                        <Clock className="w-3 h-3 text-slate-400" />
                         {card.duration}
                       </span>
                     </div>
 
-                    <div className="w-full py-2.5 px-4 rounded-xl border border-cyan-500/25 bg-blue-950/30 group-hover:border-brand-neon group-hover:bg-brand-neon group-hover:text-black font-bold text-xs uppercase tracking-wider text-slate-200 transition-all duration-200 text-center flex items-center justify-center gap-1.5 shadow-sm">
+                    <div className="w-full py-2.5 px-4 rounded-xl border border-white/10 bg-white/[0.04] group-hover:border-brand-neon group-hover:bg-brand-neon group-hover:text-black font-bold text-xs uppercase tracking-wider text-slate-200 transition-all duration-200 text-center flex items-center justify-center gap-1.5 shadow-sm">
                       <span>Ver Horarios por Sede</span>
                       <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </div>
@@ -572,7 +559,7 @@ export const ClasesPage: React.FC = () => {
         </motion.div>
 
         {/* BOTTOM HELPFUL INFO BANNER */}
-        <div className="mt-20 rounded-3xl bg-gradient-to-r from-[#030917] via-[#081b37] to-[#030917] border border-cyan-400/40 p-8 sm:p-12 text-center relative overflow-hidden shadow-[0_0_55px_rgba(0,180,255,0.2)]">
+        <div className="mt-20 rounded-3xl bg-gradient-to-r from-neutral-950 via-[#0a121c] to-neutral-950 border border-brand-neon/30 p-8 sm:p-12 text-center relative overflow-hidden shadow-[0_0_40px_rgba(0,242,254,0.12)]">
           <div className="max-w-2xl mx-auto space-y-5">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-neon/10 border border-brand-neon/30 text-xs font-bold uppercase tracking-widest text-brand-neon">
               <Sparkles className="w-3.5 h-3.5" />
