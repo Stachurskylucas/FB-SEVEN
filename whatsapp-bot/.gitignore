@@ -1,0 +1,18 @@
+# Ignorar sesión de WhatsApp (datos sensibles)
+session/
+.wwebjs_auth/
+.wwebjs_cache/
+
+# Base de datos local (no commitear)
+data/fitbot.json
+
+# Node modules
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Variables de entorno
+.env
+.env.local

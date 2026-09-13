@@ -1,0 +1,27 @@
+{
+  "name": "fb-seven-fitbot",
+  "version": "1.0.0",
+  "description": "FitBot - Asistente virtual oficial de WhatsApp para FB SEVEN TRAINING",
+  "main": "bot.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node bot.js",
+    "dev": "node --watch bot.js"
+  },
+  "keywords": [
+    "whatsapp-bot",
+    "gym",
+    "fb-seven"
+  ],
+  "author": "FB SEVEN TRAINING",
+  "license": "MIT",
+  "dependencies": {
+    "whatsapp-web.js": "^1.26.1-alpha.3",
+    "qrcode-terminal": "^0.12.0",
+    "lowdb": "^1.0.0",
+    "node-cron": "^3.0.3"
+  },
+  "allowScripts": {
+    "puppeteer@24.38.0": true
+  }
+}

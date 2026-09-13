@@ -25,3 +25,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# WhatsApp Bot (carpeta aislada — no commitear datos sensibles)
+whatsapp-bot/session/
+whatsapp-bot/.wwebjs_auth/
+whatsapp-bot/.wwebjs_cache/
+whatsapp-bot/data/fitbot.db
