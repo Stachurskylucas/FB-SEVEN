@@ -1,6 +1,7 @@
 import React from 'react';
 import { Hero } from '../components/Hero';
 import { ActivitiesSection } from '../components/ActivitiesSection';
+import { HomeServicesSection } from '../components/HomeServicesSection';
 import { SedesGallerySection } from '../components/SedesGallerySection';
 import { PricingSection } from '../components/PricingSection';
 import { FAQSection } from '../components/FAQSection';
@@ -24,7 +25,10 @@ export const HomePage: React.FC = () => {
       {/* 2. Clases & Horarios (Fondo azul oscuro con fade a negro, sin línea divisoria) */}
       <ActivitiesSection />
 
-      {/* 3. Galería de Nuestras Sedes con Thumbnail Carousel (Fondo completamente negro unificado) */}
+      {/* 3. Gabinete de Salud & Servicios (Apto Médico con ECG, Masajes, Nutrición, Kinesiología) */}
+      <HomeServicesSection />
+
+      {/* 4. Galería de Nuestras Sedes con Thumbnail Carousel (Fondo completamente negro unificado) */}
       <SedesGallerySection />
 
       {/* 4. Memberships & Plans (Fondo animado con WebGL LightRays azul/cian) */}
