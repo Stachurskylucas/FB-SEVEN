@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, HeartPulse } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Magnet } from './reactbits/Magnet';
 
@@ -138,7 +138,7 @@ export const Hero: React.FC = () => {
           </p>
 
           {/* Call to Actions */}
-          <div className="mt-7 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3.5">
+          <div className="mt-7 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
             
             <Magnet magnetStrength={0.2}>
               <a
@@ -156,16 +156,6 @@ export const Hero: React.FC = () => {
                 className="btn-tactile inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-full bg-white/[0.08] hover:bg-white/[0.14] backdrop-blur-2xl border border-white/25 hover:border-brand-neon/60 text-white font-bold text-xs sm:text-sm uppercase tracking-wider shadow-[0_4px_20px_rgba(0,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.25)] transition-all duration-300 cursor-pointer"
               >
                 <span>Actividades</span>
-              </Link>
-            </Magnet>
-
-            <Magnet magnetStrength={0.15}>
-              <Link
-                to="/servicios"
-                className="btn-tactile inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white/[0.08] hover:bg-brand-neon/20 backdrop-blur-2xl border border-brand-neon/40 hover:border-brand-neon text-brand-neon hover:text-white font-bold text-xs sm:text-sm uppercase tracking-wider shadow-[0_4px_20px_rgba(0,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.25)] transition-all duration-300 cursor-pointer"
-              >
-                <HeartPulse className="w-3.5 h-3.5 text-brand-neon" />
-                <span>Servicios & Turnos</span>
               </Link>
             </Magnet>
 
